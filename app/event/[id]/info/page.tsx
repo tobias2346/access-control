@@ -1,28 +1,46 @@
-import ManualAccess from '@/app/components/manual-access'
-import QrCameraButton from '@/app/components/qr-button'
-import Image from 'next/image'
-import React from 'react'
+'use client'
+import { useState } from "react"
+import Info from "./info"
+import Inprovments from "./inprovments"
+import Image from "next/image"
 
-const page = () => {
+const Page = () => {
+  const [activeTab, setActiveTab] = useState("info")
+
   return (
-    <div className='w-full flex flex-col items-center gap-y-4 bg-dark p-4 h-[90vh] overflow-y-auto'>
-      {
-        [0, 6, 7, 8, 1, 2, 3, 4].map(e => <div key={e} className='w-full h-20 flex justify-between bg-secondary rounded-xl p-4'>
-          <div className='flex flex-col justify-between'>
-            <h4 className='text-light font-semibold'>Mariano pere</h4>
-            <h4 className='text-light '>Numero dni</h4>
-          </div>
-          <div className='flex items-start justify-end h-full'>
-            <span className='px-5 py-1 bg-red-500 rounded-lg font-semibold '>Rechazo</span>
-          </div>
-        </div>)
-      }
-      <div className='flex flex-col gap-y-4 fixed bottom-3 right-3'>
-        <ManualAccess/>
-        <QrCameraButton/>
+    <div className="w-full px-4">
+      {/* Tabs */}
+      <button
+        type='button'
+        className='text-primary font-headline font-semibold flex items-center gap-x-2'
+      >
+        <Image src='/icons/arrow-left.svg' alt='Arrow left' width={15} height={15} />
+        Sector seleccionado
+      </button>
+      <div className="flex gap-4 border-b py-2 mt-6">
+        <button
+          onClick={() => setActiveTab("info")}
+          className={`px-4 py-2 font-medium ${activeTab === "info" ? "border-b-2 border-cyan-500 text-cyan-500" : "text-gray-500"
+            }`}
+        >
+          Info
+        </button>
+        <button
+          onClick={() => setActiveTab("inprovments")}
+          className={`px-4 py-2 font-medium ${activeTab === "inprovments" ? "border-b-2 border-cyan-500 text-cyan-500" : "text-gray-500"
+            }`}
+        >
+          Inprovments
+        </button>
+      </div>
+
+      {/* Contenido dinámico */}
+      <div className="mt-4">
+        {activeTab === "info" && <Info />}
+        {activeTab === "inprovments" && <Inprovments />}
       </div>
     </div>
   )
 }
 
-export default page
+export default Page

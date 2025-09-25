@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+body {
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
 @theme inline {
   --font-body: var(--font-inter);
   --font-headline: var(--font-nunito);

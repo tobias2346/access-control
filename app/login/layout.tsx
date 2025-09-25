@@ -13,19 +13,17 @@ export default function LoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
+      <section
         className={`antialiased bg-slate-900`}
       >
-        <section className="w-full h-[10vh] bg-dark flex justify-center items-center">
+        {/* <section className="w-full h-[10vh] bg-dark flex justify-center items-center">
           <Link href={'/'}>
           <Image src='/logos/logo.svg' width={100} height={50} alt="logo"/>
           </Link>
-        </section>
+        </section> */}
         <section className="w-full h-[90vh] flex justify-center items-center">
           {children}
         </section>
-      </body>
-    </html>
+      </section>
   );
 }
